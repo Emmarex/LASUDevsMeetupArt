@@ -27,20 +27,59 @@
                     Select a picture not more than 500px by 500px
                 </div>
                 <button class="btn btn-outline-primary" id="image_picker">Select Image</button>
-                <input type="file" name="user_image" id="user_image" hidden>
+                <input type="file" name="user_image" id="user_image" onchange="readURL(this)" hidden>
+                <button class="btn btn-outline-primary" id="download_image">Download Image</button>
             </div>
 
-            <div class="picture_box">
-                <img src="./image/me1.jpg" alt="" class="picture">
-                <img src="./image/background.png" alt="" class="overlay">
-            </div>
-
-            <div class="row">
-                <button class="btn btn-outline-primary">Download</button>
+            <div class="picture_box" id="picture_box">
+                <img src="./image/me1.jpg" alt="" id="picture" class="picture">
+                <div class="overlay" style="background-image: url('image/background.png');"></div>
+                <!-- <img src="./image/background.png" alt="" class="overlay"> -->
             </div>
 
         </div>
 
     </body>
+
+    <script src="js/html2canvas.min.js"></script>
+    <script src="js/FileSaver.min.js"></script>
+    <script>
+        document.querySelector("#picture_box").hidden = true;
+        document.querySelector("#download_image").hidden = true;
+
+        document.querySelector("#image_picker").addEventListener("click", function () {
+            document.querySelector("#user_image").click();
+        }, false);
+
+        function save_generated_image() {
+            var current_date = new Date();
+            var file_name = "lasu_devs_art_" + current_date.getHours() + current_date.getMinutes() + current_date.getDate() +
+                "_" + current_date.getMonth() + "_" + current_date.getFullYear() + ".png";
+            html2canvas(document.querySelector("#picture_box"), {
+                onrendered: function (canvas) {
+                    canvas.toBlob(function (blob) {
+                        saveAs(blob, file_name);
+                    });
+                }
+            });
+        }
+
+        document.querySelector("#download_image").addEventListener("click", function () {
+            save_generated_image();
+        }, false);
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    var image = e.target.result;
+                    document.querySelector("#picture").src = image;
+                    document.querySelector("#picture_box").hidden = false;
+                    document.querySelector("#download_image").hidden = false;
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
 
 </html>
