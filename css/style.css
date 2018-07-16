@@ -1,0 +1,44 @@
+.art-content{
+    margin: 5% auto;
+}
+
+.picture_box{
+    display: block;
+    margin: 0px auto;
+    width: 500px;
+    height: 500px;
+    background-color: white;
+    position: relative;
+}
+
+.top{
+    margin: 5px auto;
+    display: block;
+    width: 60%;
+}
+
+.overlay{
+    width: 100%;
+    margin-left: 50%;
+    height: 500px;
+    position: absolute;
+    right: 0%;
+}
+
+.picture{
+    width: 80%;
+    float: left;
+    position: absolute;
+}
+
+@media all and (max-width: 920px) {
+    .art-content{
+        margin: 10% auto;
+    }
+
+    .top{
+        margin: 5px auto;
+        display: block;
+        width: 100%;
+    }
+}

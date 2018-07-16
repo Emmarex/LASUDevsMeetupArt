@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/style.css">
+        <title>LASUDevsMeetupArt</title>
+    </head>
+
+    <body>
+
+        <header id="site-header">
+            <nav id="pal-nav" class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+                <div class="container">
+                    <a class="navbar-brand" href="">LASU Devs Meetup Art Maker</a>
+                </div>
+            </nav>
+        </header>
+
+        <div class="container art-content">
+
+            <div class="top">
+                <div class="alert alert-danger" role="alert">
+                    Select a picture not more than 500px by 500px
+                </div>
+                <button class="btn btn-outline-primary" id="image_picker">Select Image</button>
+                <input type="file" name="user_image" id="user_image" hidden>
+            </div>
+
+            <div class="picture_box">
+                <img src="./image/me1.jpg" alt="" class="picture">
+                <img src="./image/background.png" alt="" class="overlay">
+            </div>
+
+            <div class="row">
+                <button class="btn btn-outline-primary">Download</button>
+            </div>
+
+        </div>
+
+    </body>
+
+</html>
